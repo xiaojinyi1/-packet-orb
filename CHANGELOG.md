@@ -2,6 +2,11 @@
 
 本项目的里程碑按可验收的能力划分，而不是按日期。
 
+## P4.1
+- 减速带（loss 1–9 段）改为真实正弦起伏：视觉网格与 trimesh 碰撞同源，无额外碰撞体
+- 补 `bumps` 彩蛋触发；抑制 2.4MB worker 的 chunk 体积警告
+- 仓库拆到 `网络迷宫/` 独立仓库并部署 GitHub Pages
+
 ## P4 — 可分享与上线收尾（当前）
 
 - 新增 `data/ShareCodec.ts`：自实现 LZSS + base64url，把 `TraceResult` 编进 URL hash；

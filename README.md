@@ -1,5 +1,7 @@
 # Packet Orb
 
+**线上地址**：https://xiaojinyi1.github.io/-packet-orb/ （GitHub Pages，仓库 `xiaojinyi1/-packet-orb`）
+
 把一段 `traceroute` 结果变成可驾驶的 low-poly 3D 网络迷宫。
 延迟是坡度，丢包是坑洞，抖动是蹦床，匿名跳是迷雾隧道，ASN 变化是拱门与换色。
 

@@ -7,6 +7,8 @@ export default defineConfig({
   },
   build: {
     target: 'es2022',
+    // 物理 worker 里的 rapier wasm 以 base64 内联，2.4MB 是刻意单文件，避免误报警告。
+    chunkSizeWarningLimit: 2600,
     rollupOptions: {
       output: {
         manualChunks: {

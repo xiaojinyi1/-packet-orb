@@ -825,6 +825,14 @@ async function boot_(): Promise<void> {
     trail.update(orb.position, pose.speed, dt);
     particles.update(dt);
 
+    // 减速带彩蛋：开着走过 loss 1–9 的起伏段。
+    if (pose.speed > 4) {
+      const bumpNear = nearestSample(world.layout, orbPos.x, orbPos.z);
+      if (bumpNear && world.layout.spans[bumpNear.spanIndex]?.bumpAmp > 0) {
+        achievements.unlock('bumps');
+      }
+    }
+
     if (pose.impact > 0.25) {
       particles.burstImpact(orb.position, pose.impact, 'road');
       sfx.impact('road', pose.impact);

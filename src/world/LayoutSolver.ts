@@ -59,6 +59,8 @@ export interface LayoutSpan {
   gapStartS: number | null;
   gapEndS: number | null;
   landingEndS: number | null;
+  /** 减速带振幅（米）；loss 1–9 的普通段会叠一层正弦起伏，视觉与碰撞同源。 */
+  bumpAmp: number;
 }
 
 export interface PathSample {
@@ -245,6 +247,7 @@ export function solveLayout(trace: TraceResult): Layout {
       gapStartS: null,
       gapEndS: null,
       landingEndS: null,
+      bumpAmp: kind === 'road' && !to.anonymous && to.lossPct > 0 && to.lossPct < 10 ? 0.05 : 0,
     };
 
     if (kind === 'pit' || kind === 'trampoline') {
@@ -300,7 +303,14 @@ export function solveLayout(trace: TraceResult): Layout {
       };
       heading += dHeading;
       s += ds;
-      points.push(makePoint(s, pos.x, pos.y, pos.z, i, false, false));
+      // 减速带：两端归零的正弦包络，避免在段边界制造台阶。
+      const bumpY =
+        span.bumpAmp > 0
+          ? span.bumpAmp *
+            Math.sin(Math.PI * (sLocal / length)) *
+            Math.sin((sLocal / 2.4) * Math.PI * 2)
+          : 0;
+      points.push(makePoint(s, pos.x, pos.y + bumpY, pos.z, i, false, false));
     }
 
     if (kind === 'jump' && span.kickerStartS !== null) {
