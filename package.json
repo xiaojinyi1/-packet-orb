@@ -1,0 +1,29 @@
+{
+  "name": "packet-orb",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Packet Orb — traceroute as a drivable low-poly network maze",
+  "scripts": {
+    "dev": "vite",
+    "build": "node build.mjs",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "node build.mjs --typecheck-only"
+  },
+  "dependencies": {
+    "@dimforge/rapier3d-compat": "^0.17.3",
+    "camera-controls": "^3.1.2",
+    "gsap": "^3.12.5",
+    "howler": "^2.2.4",
+    "three": "^0.183.0",
+    "tweakpane": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/three": "^0.183.0",
+    "stats-gl": "^3.8.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.7",
+    "vitest": "^2.1.9"
+  }
+}

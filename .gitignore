@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.local
+.DS_Store
+*.log
+
+# 同级目录里是各自独立的仓库，不属于本项目，避免被外层 git 误收
+一座城/
+小恐龙项目/
+.tmp/
